@@ -1,0 +1,16 @@
+# 开发工具配置
+AGENTS.md
+.kimi/
+DIRECTORY.md
+GIT.md
+IQS/
+
+
+# 开发环境配置
+.env
+.venv/
+
+# 个人文档
+智能深度研究助手_项目设计文档.md
+接口文档.md
+实现文档.md

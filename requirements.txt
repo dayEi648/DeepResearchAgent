@@ -1,0 +1,28 @@
+# Web 框架
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+
+# LangGraph + LangChain（请根据实际环境选择兼容版本，当前推荐 langgraph>=0.3.x）
+langgraph>=0.3.0
+langchain>=0.3.0
+langchain-openai>=0.3.0
+langchain-chroma>=0.2.0
+
+# MCP 客户端
+mcp>=1.6.0
+
+# 向量数据库
+chromadb>=0.6.0
+
+# Redis
+redis>=5.0.1
+
+# 配置管理
+pydantic-settings>=2.7.0
+python-dotenv>=1.0.0
+
+# HTTP 客户端（调用 IQS Search 等国内 API）
+aiohttp>=3.11.0
+
+# 工具
+aiofiles>=24.1.0

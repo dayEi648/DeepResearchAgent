@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "iqs-search": {
+      "type": "sse",
+      "url": "https://iqs-mcp.aliyuncs.com/mcp-servers/iqs-mcp-server-search/sse",
+      "headers": {
+        "X-API-Key": "${IQSSEARCH_API_KEY}"
+      }
+    }
+  }
+}
