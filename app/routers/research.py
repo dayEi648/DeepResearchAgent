@@ -152,7 +152,7 @@ async def _run_research(task_id: str, topic: str) -> None:
         config = {"configurable": {"thread_id": task_id}}
 
         # 执行图（ainvoke 是异步版本）
-        await graph.ainvoke(initial_state, config=config)
+        final_state = await graph.ainvoke(initial_state, config=config)
 
         print(f"[Task] {task_id} 执行完成")
 
@@ -163,7 +163,10 @@ async def _run_research(task_id: str, topic: str) -> None:
                 "event_type": "node_complete",
                 "task_id": task_id,
                 "node": "END",
-                "output": {"status": "completed"},
+                "output": {
+                    "status": "completed",
+                    "report_path": final_state.get("report_path"),
+                },
             })
 
     except Exception as e:

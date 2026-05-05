@@ -46,7 +46,7 @@ const reportContent = computed(() => taskStore.report || '')
 
 async function loadReport() {
   // 如果 store 中没有报告内容，从 API 获取
-  if (!taskStore.report && !taskStore.taskId) {
+  if (!taskStore.report) {
     try {
       const data = await getResearchStatus(taskId)
       taskStore.setTask(taskId, data.topic)

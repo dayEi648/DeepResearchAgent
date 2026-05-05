@@ -93,6 +93,10 @@ function updateFromEvent(payload) {
     }
     taskStore.addLog(node, msg, new Date().toISOString())
 
+    if (node === 'save_report' && output?.report_path) {
+      taskStore.setReport(null, output.report_path)
+    }
+
     if (node === 'END') {
       taskStore.setStatus('completed')
       if (output?.report_path) {
