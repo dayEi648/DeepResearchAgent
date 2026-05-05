@@ -1,0 +1,117 @@
+/* ================================================================
+   Design System — Apple 风格设计系统
+   作用：定义全局 CSS 变量、字体、基础样式
+   ================================================================ */
+
+:root {
+  /* 背景 — Apple 式二元节奏：纯黑与浅灰交替 */
+  --bg-black: #000000;
+  --bg-light: #f5f5f7;
+  --bg-white: #ffffff;
+
+  /* 文字 */
+  --text-primary: #1d1d1f;
+  --text-secondary: rgba(0, 0, 0, 0.80);
+  --text-tertiary: rgba(0, 0, 0, 0.48);
+  --text-inverse: #ffffff;
+  --text-inverse-secondary: rgba(255, 255, 255, 0.60);
+
+  /* 强调色 — Apple Blue，唯一彩色，只用于交互元素 */
+  --accent: #0071e3;
+  --accent-bright: #2997ff;
+  --link: #0066cc;
+
+  /* 表面 — 深色模式下使用 Apple 暗色表面 */
+  --surface-dark-1: #272729;
+  --surface-dark-2: #2a2a2d;
+  --surface-dark-3: #28282a;
+
+  /* 阴影 — 极少使用，且只有一次：柔和、弥散 */
+  --shadow-soft: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+
+  /* 步骤条颜色 */
+  --step-inactive-border: #d2d2d7;
+  --step-completed-bg: #1d1d1f;
+}
+
+/* ================================================================
+   全局重置与基础
+   ================================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-light);
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ================================================================
+   字体工具类
+   ================================================================ */
+
+.font-display {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
+}
+
+.font-body {
+  font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+}
+
+.font-mono {
+  font-family: 'Geist Mono', monospace;
+}
+
+/* ================================================================
+   布局工具类
+   ================================================================ */
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.page-section {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* 隐藏滚动条但保留滚动功能（Webkit） */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

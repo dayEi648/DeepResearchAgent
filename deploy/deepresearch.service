@@ -1,0 +1,35 @@
+[Unit]
+Description=Deep Research Agent FastAPI Service
+After=network.target redis.service
+Wants=redis.service
+
+[Service]
+Type=simple
+
+# 运行用户（建议用一个非 root 用户，如 www-data 或 ubuntu）
+User=www-data
+Group=www-data
+
+# 工作目录（项目代码所在路径，部署时请根据实际情况修改）
+WorkingDirectory=/var/www/deepresearch
+
+# 虚拟环境中的 Uvicorn 启动命令
+# --host 127.0.0.1：只监听本机，由 Nginx 反向代理访问，不直接暴露到公网
+# --port 8000：与 Nginx proxy_pass 对应
+# --proxy-headers：信任 Nginx 转发的 X-Forwarded-* 头
+ExecStart=/var/www/deepresearch/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --proxy-headers
+
+# 自动重启策略
+Restart=always
+RestartSec=5
+
+# 环境变量文件（包含所有 API Key、OSS 配置、Redis URL 等）
+# 注意：该文件不应提交到 Git，需手动上传到服务器
+EnvironmentFile=/var/www/deepresearch/.env
+
+# 进程管理
+KillMode=mixed
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

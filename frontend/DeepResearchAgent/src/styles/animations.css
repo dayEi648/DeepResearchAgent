@@ -1,0 +1,143 @@
+/* ================================================================
+   Animations — Apple 风格动效系统
+   作用：页面加载、切换、交互的动画定义
+   ================================================================ */
+
+/* ---------------------------------------------------------------
+   页面加载 staggered fade-in
+   --------------------------------------------------------------- */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 600ms ease-out forwards;
+  opacity: 0;
+}
+
+.delay-0   { animation-delay: 0ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* ---------------------------------------------------------------
+   淡入（无位移）— 用于日志、卡片等
+   --------------------------------------------------------------- */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 300ms ease-out forwards;
+}
+
+/* ---------------------------------------------------------------
+   页面切换过渡
+   --------------------------------------------------------------- */
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 200ms ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+/* ---------------------------------------------------------------
+   按钮悬停微亮
+   --------------------------------------------------------------- */
+
+.btn-primary {
+  transition: background-color 200ms ease, transform 150ms ease;
+}
+
+.btn-primary:hover {
+  background-color: #0077ed;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ---------------------------------------------------------------
+   步骤指示器过渡
+   --------------------------------------------------------------- */
+
+.step-transition {
+  transition: all 400ms ease;
+}
+
+/* ---------------------------------------------------------------
+   进度条平滑过渡
+   --------------------------------------------------------------- */
+
+.progress-fill {
+  transition: width 600ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ---------------------------------------------------------------
+   日志条目淡入
+   --------------------------------------------------------------- */
+
+.log-entry {
+  animation: fadeIn 300ms ease-out forwards;
+}
+
+/* ---------------------------------------------------------------
+   蓝色指示条滑入
+   --------------------------------------------------------------- */
+
+@keyframes slideInLeft {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+.indicator-slide-in {
+  animation: slideInLeft 400ms ease-out forwards;
+}
+
+/* ---------------------------------------------------------------
+   旋转动画 — 加载态
+   --------------------------------------------------------------- */
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ---------------------------------------------------------------
+   脉冲淡入 — 报告生成提示
+   --------------------------------------------------------------- */
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.7; }
+}
+
+.animate-subtle-pulse {
+  animation: subtlePulse 2s ease-in-out infinite;
+}

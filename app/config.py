@@ -26,6 +26,9 @@ class Settings(BaseSettings):
     openai_api_key: str | None = None
     zhipu_api_key: str | None = None
 
+    # --- 阿里云百炼（Embedding 向量模型） ---
+    dashscope_api_key: str | None = None
+    
     # --- 阿里云 IQS Search ---
     iqssearch_api_key: str | None = None
 
@@ -37,6 +40,13 @@ class Settings(BaseSettings):
 
     # --- 超时 ---
     agent_node_timeout: int = 60
+
+    # --- 阿里云 OSS ---
+    oss_bucket_name: str | None = None
+    oss_endpoint: str | None = None
+    oss_access_key_id: str | None = None
+    oss_access_key_secret: str | None = None
+    oss_report_prefix: str = "reports"  # OSS 中报告文件的存储前缀
 
     # --- 项目路径 ---
     project_root: Path = Path(__file__).parent.parent
@@ -101,5 +111,5 @@ class Settings(BaseSettings):
 # 全局单例：整个应用共享同一个 settings 实例
 settings = Settings()
 
-# 确保 reports 目录存在
+# 确保 reports 目录存在（本地开发/兜底用）
 settings.reports_dir.mkdir(parents=True, exist_ok=True)
